@@ -18,8 +18,9 @@
     "chamber_h": 80.0,
     "chamber_d": 60.0,
     "backplate_t": 4.0,
-    "bracket_t": 4.0,
-    "bracket_w": 60.0
+    "bracket_t": 5.0,
+    "bracket_w": 60.0,
+    "bracket_r": 8.0
   },
   "parts": {
     "line_pipework": {
@@ -344,8 +345,8 @@
         30,
         -40
       ],
-      "material": "Al 6061-T6, 4 mm, gusseted (rev B)",
-      "volume_mm3": 40069.2,
+      "material": "Al 6061-T6, 5 mm, R8 bend (rev B)",
+      "volume_mm3": 46537.7,
       "bbox": [
         60.0,
         98.0,
@@ -359,8 +360,8 @@
         30,
         -40
       ],
-      "material": "Al 6061-T6, 4 mm, gusseted (rev B)",
-      "volume_mm3": 40069.2,
+      "material": "Al 6061-T6, 5 mm, R8 bend (rev B)",
+      "volume_mm3": 46537.7,
       "bbox": [
         60.0,
         98.0,
@@ -375,11 +376,11 @@
         30
       ],
       "material": "M6 SS304 U-bolt",
-      "volume_mm3": 3087.6,
+      "volume_mm3": 3200.7,
       "bbox": [
         346.0,
         33.3,
-        27.3
+        28.3
       ]
     }
   }

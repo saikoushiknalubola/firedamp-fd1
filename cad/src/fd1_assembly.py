@@ -20,7 +20,7 @@ os.makedirs(STL, exist_ok=True)
 P = dict(
     pipe_od=21.3,        # 1/2" NB pipe (DN15)
     pipe_id=15.8,
-    orifice_bore=3.4,    # sized for ~6 L/min at ~200 Pa (see analysis/orifice_sizing.py)
+    orifice_bore=3.4,    # ~6 L/min of air at ~200 Pa (analysis/gas_calcs.py)
     flange_d=60.0,
     flange_t=8.0,
     plate_t=1.5,         # SS304 orifice plate
@@ -32,7 +32,8 @@ P = dict(
     enc_w=200.0, enc_h=120.0, enc_d=75.0,   # IP65 ABS/PC electronics enclosure
     chamber_w=90.0, chamber_h=80.0, chamber_d=60.0,
     backplate_t=4.0,
-    bracket_t=4.0, bracket_w=60.0,
+    bracket_t=5.0, bracket_w=60.0,   # rev B after FEA (analysis/bracket_fea.py)
+    bracket_r=8.0,                   # inside bend radius, rev B
 )
 D = P["pipe_od"]
 
@@ -145,19 +146,27 @@ bp = box(-10, 420, 80, 80 + P["backplate_t"], -130, 240)
 parts["backplate"] = (bp, "#cbd5e1", (0, 70, 0), "Al 6061-T6 4 mm (rig) / MS 3 mm painted")
 
 def bracket(xc):
-    w = P["bracket_w"]
-    t = P["bracket_t"]
-    leg = box(xc - w / 2, xc + w / 2, 80 - t, 80, -70, -ro)
-    arm = box(xc - w / 2, xc + w / 2, -18, 80, -ro - t, -ro)
-    gus = (cq.Workplane("YZ", origin=(xc - 2, 0, 0))
-           .polyline([(80 - t, -ro - t), (40, -ro - t), (80 - t, -60)]).close().extrude(4))
+    """Rev B pipe bracket: 5 mm plate, 8 mm inside bend radius (FEA FoS 3.87 at 12 kg / 4 g)."""
+    import math
+    w, t, r = P["bracket_w"], P["bracket_t"], P["bracket_r"]
+    yb = 80.0                      # backplate face
+    zt = -ro                       # top of arm = underside of pipe
+    # profile in (y, z): arm runs from y = -18 to the backplate, leg runs down the backplate
+    pts = [(-18.0, zt), (yb, zt), (yb, -70.0), (yb - t, -70.0)]
+    cy, cz = yb - t - r, zt - t - r          # centre of inside bend
+    for k in range(13):
+        a = math.radians(90.0 * k / 12)
+        pts.append((cy + r * math.cos(a), cz + r * math.sin(a)))
+    pts += [(-18.0, zt - t)]
+    prof = (cq.Workplane("YZ", origin=(xc - w / 2, 0, 0)).polyline(pts).close().extrude(w))
     ub = zcyl(xc, -ro - 3, -ro - t, 2 * ro + t + 2, 3).union(zcyl(xc, ro + 3, -ro - t, 2 * ro + t + 2, 3))
-    return leg.union(arm).union(gus), ub
+    return prof, ub
+
 
 b1, u1 = bracket(35)
 b2, u2 = bracket(375)
-parts["pipe_bracket_A"] = (b1, "#475569", (0, 30, -40), "Al 6061-T6, 4 mm, gusseted (rev B)")
-parts["pipe_bracket_B"] = (b2, "#475569", (0, 30, -40), "Al 6061-T6, 4 mm, gusseted (rev B)")
+parts["pipe_bracket_A"] = (b1, "#475569", (0, 30, -40), "Al 6061-T6, 5 mm, R8 bend (rev B)")
+parts["pipe_bracket_B"] = (b2, "#475569", (0, 30, -40), "Al 6061-T6, 5 mm, R8 bend (rev B)")
 parts["u_bolts"] = (u1.union(u2), "#94a3b8", (0, -20, 30), "M6 SS304 U-bolt")
 
 # ---------------- export ----------------
