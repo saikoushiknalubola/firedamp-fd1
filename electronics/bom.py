@@ -1,0 +1,54 @@
+"""Prototype BOM for the Stage 3 bench rig (2 x FD-1 nodes + router + rig).
+Prices are pre-order estimates in INR (Oct 2026) and must be replaced with invoice values.
+Run: python bom.py -> bom.csv, prints totals."""
+import csv
+import os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+# group, item, part / spec, qty, unit INR (est.), source, lead time (est.)
+ROWS = [
+    ("Node", "MCU module", "Espressif ESP32-S3-DevKitC-1 (WROOM-1-N8R8)", 2, 1200, "Local", "2-3 days"),
+    ("Node", "CH4 sensor", "Winsen MH-440D NDIR, 0-100 %vol", 2, 5500, "Imported (CN)", "10-15 days"),
+    ("Node", "O2 sensor", "DFRobot SEN0322 Gravity I2C, 0-25 %vol", 2, 4200, "Local distributor", "3-5 days"),
+    ("Node", "Differential pressure", "Sensirion SDP810-500Pa, I2C", 2, 3600, "Imported (Mouser IN)", "5-7 days"),
+    ("Node", "Line pressure", "NXP MPX5100AP, 15-115 kPa abs", 2, 1400, "Imported (Mouser IN)", "5-7 days"),
+    ("Node", "Temp / RH", "Sensirion SHT40 breakout", 2, 450, "Local", "2-3 days"),
+    ("Node", "RS-485 transceiver", "MAX3485 3V3 module", 2, 120, "Local", "2-3 days"),
+    ("Node", "Solenoid driver", "IRLZ44N, 1N5822, resistors", 2, 150, "Local", "2-3 days"),
+    ("Node", "Isolation valve", "12 V NC direct-acting solenoid, 1/2\" brass", 2, 650, "Local", "3-5 days"),
+    ("Node", "Throttle", "1/2\" brass ball valve + MG996R servo", 2, 730, "Local", "2-3 days"),
+    ("Node", "HMI", "SSD1306 OLED, 12 V R/A/G stack light, buzzer, ULN2003A", 2, 1000, "Local", "2-3 days"),
+    ("Node", "Logging", "microSD SPI module + 16 GB card", 2, 420, "Local", "2-3 days"),
+    ("Node", "Power", "MP1584 buck, AMS1117-3.3, SS34, SMBJ15A, polyfuse, 470 uF", 2, 220, "Local", "2-3 days"),
+    ("Node", "Enclosure", "IP65 ABS/PC 200x120x75 + 4 x PG7 glands", 2, 1020, "Local", "3-5 days"),
+    ("Node", "Orifice meter", "SS304 plate 1.5 mm (laser cut) + 2 x Al 6061 flanges (machined)", 2, 1000, "Local job shop", "5-7 days"),
+    ("Shared", "PCB", "2-layer FR4 1.6 mm controller board, lot of 5", 1, 1800, "Domestic fab", "6-8 days"),
+    ("Shared", "Printed parts", "PETG filament 1 kg (chamber, servo bracket)", 1, 1100, "Local", "2 days"),
+    ("Router", "3-way valve", "12 V motorised 3-way ball valve, 1/2\"", 1, 2800, "Local", "3-5 days"),
+    ("Router", "H-bridge", "DRV8871 module", 1, 350, "Local", "2-3 days"),
+    ("Rig", "Vacuum pump", "12 V diaphragm pump, ~6 L/min class", 1, 1400, "Local", "3-5 days"),
+    ("Rig", "Surrogate gas", "CO2 cylinder + regulator (non-flammable)", 1, 3800, "Local", "2-3 days"),
+    ("Rig", "Reference flow", "Rotameter 1-10 L/min", 2, 1300, "Local", "3-5 days"),
+    ("Rig", "Ingress simulation", "Brass needle valves", 4, 450, "Local", "2-3 days"),
+    ("Rig", "Pipework", "1/2\" PVC-U / clear acrylic, tees, PU 4 mm tube, fittings", 1, 2500, "Local", "2-3 days"),
+    ("Rig", "Structure", "Al 6061 backplate 4 mm + 2 brackets (rev B, 5 mm)", 1, 1800, "Local job shop", "5-7 days"),
+    ("Rig", "Bench power", "12 V 5 A regulated supply", 1, 900, "Local", "2-3 days"),
+    ("Rig", "Span check gas", "Certified 2.5 %vol CH4 in air, small cylinder (or lab loan)", 1, 4500, "Domestic gas vendor", "7-10 days"),
+]
+
+
+def main():
+    tot = 0
+    groups = {}
+    with open(os.path.join(HERE, "bom.csv"), "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["group", "item", "part_spec", "qty", "unit_inr_est", "line_inr_est", "source", "lead_time_est"])
+        for g, i, p, q, u, s, lt in ROWS:
+            w.writerow([g, i, p, q, u, q * u, s, lt]); tot += q * u
+            groups[g] = groups.get(g, 0) + q * u
+    print(groups, "TOTAL", tot)
+    return groups, tot
+
+
+if __name__ == "__main__":
+    main()

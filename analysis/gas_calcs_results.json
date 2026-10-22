@@ -1,0 +1,18 @@
+{
+  "orifice": {
+    "beta": 0.215,
+    "Cd": 0.6,
+    "q_air_at_200Pa_lpm": 5.96,
+    "rho_mix_60pct": 0.882,
+    "underread_if_air_density_assumed_at_60pct": 14.4
+  },
+  "mrv_example": {
+    "assumed_flow_m3min_pure_CH4": 0.3,
+    "Nm3_per_day": 432,
+    "t_CH4_per_day": 0.31,
+    "tCO2e20_per_day": 24.8,
+    "kWh_e_per_day": 1504,
+    "engine_eff": 0.35,
+    "LHV_MJ_Nm3": 35.8
+  }
+}

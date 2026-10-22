@@ -1,0 +1,386 @@
+{
+  "parameters": {
+    "pipe_od": 21.3,
+    "pipe_id": 15.8,
+    "orifice_bore": 3.4,
+    "flange_d": 60.0,
+    "flange_t": 8.0,
+    "plate_t": 1.5,
+    "bolt_pcd": 44.0,
+    "bolt_d": 5.5,
+    "trap_od": 50.0,
+    "trap_id": 44.0,
+    "trap_h": 110.0,
+    "enc_w": 200.0,
+    "enc_h": 120.0,
+    "enc_d": 75.0,
+    "chamber_w": 90.0,
+    "chamber_h": 80.0,
+    "chamber_d": 60.0,
+    "backplate_t": 4.0,
+    "bracket_t": 4.0,
+    "bracket_w": 60.0
+  },
+  "parts": {
+    "line_pipework": {
+      "colour": "#9fb3c8",
+      "explode": [
+        0,
+        0,
+        0
+      ],
+      "material": "PVC-U / cast acrylic (rig)",
+      "volume_mm3": 36459.3,
+      "bbox": [
+        400.0,
+        21.3,
+        21.3
+      ]
+    },
+    "condensate_trap": {
+      "colour": "#cfd8e3",
+      "explode": [
+        0,
+        0,
+        -40
+      ],
+      "material": "Cast acrylic tube + PVC tee",
+      "volume_mm3": 60624.0,
+      "bbox": [
+        50.0,
+        50.0,
+        110.0
+      ]
+    },
+    "drain_plug": {
+      "colour": "#c2410c",
+      "explode": [
+        0,
+        0,
+        -90
+      ],
+      "material": "Brass 1/4\" BSP plug",
+      "volume_mm3": 1539.4,
+      "bbox": [
+        14.0,
+        14.0,
+        10.0
+      ]
+    },
+    "flange_upstream": {
+      "colour": "#64748b",
+      "explode": [
+        0,
+        0,
+        0
+      ],
+      "material": "Al 6061-T6",
+      "volume_mm3": 20290.7,
+      "bbox": [
+        8.0,
+        60.0,
+        60.0
+      ]
+    },
+    "orifice_plate": {
+      "colour": "#e2b714",
+      "explode": [
+        0,
+        0,
+        70
+      ],
+      "material": "SS304, 1.5 mm, bore 3.4 mm",
+      "volume_mm3": 4227.5,
+      "bbox": [
+        1.5,
+        60.0,
+        60.0
+      ]
+    },
+    "flange_downstream": {
+      "colour": "#64748b",
+      "explode": [
+        35,
+        0,
+        0
+      ],
+      "material": "Al 6061-T6",
+      "volume_mm3": 20290.7,
+      "bbox": [
+        8.0,
+        60.0,
+        60.0
+      ]
+    },
+    "dp_taps": {
+      "colour": "#0ea5e9",
+      "explode": [
+        0,
+        0,
+        40
+      ],
+      "material": "Brass 1/8\" barbs",
+      "volume_mm3": 1017.9,
+      "bbox": [
+        29.7,
+        6.0,
+        33.4
+      ]
+    },
+    "isolation_solenoid": {
+      "colour": "#1e293b",
+      "explode": [
+        0,
+        0,
+        60
+      ],
+      "material": "12 V NC direct-acting, brass body",
+      "volume_mm3": 175134.0,
+      "bbox": [
+        60.0,
+        44.0,
+        96.0
+      ]
+    },
+    "throttle_ball_valve": {
+      "colour": "#b45309",
+      "explode": [
+        0,
+        0,
+        0
+      ],
+      "material": "Brass 1/2\" full-bore",
+      "volume_mm3": 41798.9,
+      "bbox": [
+        45.0,
+        34.0,
+        46.0
+      ]
+    },
+    "servo_bracket": {
+      "colour": "#16a34a",
+      "explode": [
+        0,
+        0,
+        50
+      ],
+      "material": "PETG (printed)",
+      "volume_mm3": 6944.0,
+      "bbox": [
+        33.0,
+        28.0,
+        33.0
+      ]
+    },
+    "throttle_servo": {
+      "colour": "#111827",
+      "explode": [
+        0,
+        0,
+        95
+      ],
+      "material": "MG996R class, 11 kg-cm",
+      "volume_mm3": 30400.0,
+      "bbox": [
+        40.0,
+        20.0,
+        38.0
+      ]
+    },
+    "sensing_chamber": {
+      "colour": "#86efac",
+      "explode": [
+        0,
+        40,
+        40
+      ],
+      "material": "PETG (printed), 3 mm wall",
+      "volume_mm3": 82728.0,
+      "bbox": [
+        90.0,
+        60.0,
+        80.0
+      ]
+    },
+    "chamber_lid": {
+      "colour": "#bbf7d0",
+      "explode": [
+        0,
+        40,
+        120
+      ],
+      "material": "Cast acrylic 4 mm + EPDM gasket",
+      "volume_mm3": 21600.0,
+      "bbox": [
+        90.0,
+        60.0,
+        4.0
+      ]
+    },
+    "ch4_ndir_sensor": {
+      "colour": "#7c3aed",
+      "explode": [
+        0,
+        40,
+        80
+      ],
+      "material": "Winsen MH-440D (0-100 %vol CH4)",
+      "volume_mm3": 15120.0,
+      "bbox": [
+        35.0,
+        24.0,
+        18.0
+      ]
+    },
+    "o2_cell": {
+      "colour": "#db2777",
+      "explode": [
+        0,
+        40,
+        80
+      ],
+      "material": "DFRobot SEN0322 (0-25 %vol O2)",
+      "volume_mm3": 9424.8,
+      "bbox": [
+        20.0,
+        20.0,
+        30.0
+      ]
+    },
+    "sample_loop": {
+      "colour": "#0ea5e9",
+      "explode": [
+        0,
+        20,
+        20
+      ],
+      "material": "PU tube 4 mm",
+      "volume_mm3": 3470.7,
+      "bbox": [
+        63.0,
+        32.5,
+        52.0
+      ]
+    },
+    "electronics_enclosure": {
+      "colour": "#e5e7eb",
+      "explode": [
+        0,
+        -60,
+        60
+      ],
+      "material": "ABS/PC IP65, 200x120x75",
+      "volume_mm3": 174187.5,
+      "bbox": [
+        200.0,
+        75.0,
+        120.0
+      ]
+    },
+    "oled_window": {
+      "colour": "#0f172a",
+      "explode": [
+        0,
+        -90,
+        60
+      ],
+      "material": "SSD1306 OLED behind PC window",
+      "volume_mm3": 3000.0,
+      "bbox": [
+        50.0,
+        2.0,
+        30.0
+      ]
+    },
+    "cable_glands": {
+      "colour": "#374151",
+      "explode": [
+        0,
+        -60,
+        20
+      ],
+      "material": "PG7 nylon, IP68",
+      "volume_mm3": 6651.1,
+      "bbox": [
+        136.0,
+        13.9,
+        10.0
+      ]
+    },
+    "stack_light": {
+      "colour": "#f59e0b",
+      "explode": [
+        0,
+        -60,
+        120
+      ],
+      "material": "12 V R/A/G stack light",
+      "volume_mm3": 42216.7,
+      "bbox": [
+        28.0,
+        28.0,
+        76.0
+      ]
+    },
+    "backplate": {
+      "colour": "#cbd5e1",
+      "explode": [
+        0,
+        70,
+        0
+      ],
+      "material": "Al 6061-T6 4 mm (rig) / MS 3 mm painted",
+      "volume_mm3": 636400.0,
+      "bbox": [
+        430.0,
+        4.0,
+        370.0
+      ]
+    },
+    "pipe_bracket_A": {
+      "colour": "#475569",
+      "explode": [
+        0,
+        30,
+        -40
+      ],
+      "material": "Al 6061-T6, 4 mm, gusseted (rev B)",
+      "volume_mm3": 40069.2,
+      "bbox": [
+        60.0,
+        98.0,
+        59.4
+      ]
+    },
+    "pipe_bracket_B": {
+      "colour": "#475569",
+      "explode": [
+        0,
+        30,
+        -40
+      ],
+      "material": "Al 6061-T6, 4 mm, gusseted (rev B)",
+      "volume_mm3": 40069.2,
+      "bbox": [
+        60.0,
+        98.0,
+        59.4
+      ]
+    },
+    "u_bolts": {
+      "colour": "#94a3b8",
+      "explode": [
+        0,
+        -20,
+        30
+      ],
+      "material": "M6 SS304 U-bolt",
+      "volume_mm3": 3087.6,
+      "bbox": [
+        346.0,
+        33.3,
+        27.3
+      ]
+    }
+  }
+}

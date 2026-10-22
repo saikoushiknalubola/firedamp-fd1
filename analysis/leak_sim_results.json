@@ -1,0 +1,9 @@
+{
+  "throttle_at_s": 353,
+  "gross_leak_isolate_at_s": 331,
+  "gross_leak_min_pct_while_open": 24.0,
+  "min_true_pct_uncontrolled": 17.0,
+  "min_true_pct_controlled": 28.5,
+  "uncontrolled_seconds_below_30": 859,
+  "controlled_seconds_open_below_25": 0
+}
