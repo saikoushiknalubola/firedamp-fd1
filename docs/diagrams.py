@@ -208,8 +208,8 @@ def gantt():
     start = dt.date(2026, 10, 26)
     tasks = [
         ("Order imported parts (MH-440D, SDP810)", "2026-10-26", "2026-11-08", NAVY),
-        ("KiCad schematic + 2-layer PCB, DRC", "2026-10-26", "2026-11-09", NAVY),
-        ("PCB fab + assembly; print chamber, cut orifice", "2026-11-09", "2026-11-23", NAVY),
+        ("Gerbers to fab (layout + DRC done in Stage 2)", "2026-10-26", "2026-11-05", NAVY),
+        ("PCB assembly; print chamber, cut orifice", "2026-11-05", "2026-11-20", NAVY),
         ("Firmware: drivers, state machine, Modbus", "2026-11-02", "2026-11-30", CYAN),
         ("Rig build + leak test + flow calibration", "2026-11-16", "2026-11-30", CYAN),
         ("Sensor checks: zero + span gas, plausibility", "2026-11-23", "2026-12-03", CYAN),

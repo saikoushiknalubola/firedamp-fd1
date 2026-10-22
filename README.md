@@ -1,6 +1,8 @@
 # Firedamp Dynamics · FD-1 Borehole Sentinel
 
-**Vishwakarma Awards 2026-27** · Sustainable Mining (IIT Hyderabad) · Application ID **VK26-IITH-SM-0008** · Team Chakra
+**Vishwakarma Awards 2026-27** · Sustainable Mining (IIT Hyderabad) · Application ID **VK26-IITH-SM-0008**
+
+**Team Chakra, SR University, Warangal:** Saikoushik Nalubola (lead), Atthe Durga Raj, Devara Aravind
 
 ![FD-1 bench node](docs/figures/cad_iso.png)
 
@@ -23,8 +25,8 @@ Firedamp Dynamics is a five-stage capture system: drainage, conditioning, utilis
 | Leak model | moderate leak held at ≥ 28.5% CH4 by throttling; gross leak isolated at 331 s; unmanaged range falls to 17.0% |
 | Flow accuracy | density correction removes a 14.4% under-read at 60% CH4 |
 | Bracket FEA | rev A FoS 1.87 → rev B FoS 3.87 (12 kg spool at 4 g, Al 6061-T6) |
-| Electronics | KiCad 7 schematic, 44 parts, 44 nets, netlist check 0 errors |
-| Cost | ₹21,660 parts per bench node · ₹68,670 full rig (pre-order estimates) |
+| Electronics | KiCad 7 schematic (44 parts, 44 nets) and routed 2-layer PCB, 110 × 80 mm, DRC 0 errors |
+| Cost | ₹35,400 per complete node · ₹48,400 for the full Stage 3 build incl. bench rig (approximate quotes, Oct 2026) |
 | Value | one borehole draining 0.3 m3/min CH4 ≈ $190/day of gas at Ember's import-offset rate |
 
 Every number has a source or a script: see [docs/sources.md](docs/sources.md).
@@ -35,8 +37,8 @@ Every number has a source or a script: see [docs/sources.md](docs/sources.md).
 |---|---|
 | `cad/src/fd1_assembly.py` | Parametric CadQuery model, 24 parts, driven by one parameter block |
 | `cad/step/`, `cad/stl/` | STEP for every part plus the assembly; STL for printing (chamber, servo bracket) |
-| `electronics/kicad/` | Native KiCad 7 schematic, exported netlist, PDF/SVG, generator and connectivity checker |
-| `electronics/bom.csv` | 27-line BOM with source and lead time |
+| `electronics/kicad/` | Native KiCad 7 schematic + PCB, netlist, DRC report, Specctra files, generators, renderer |
+| `electronics/bom.csv` | Itemised BOM with price basis for every line and the cost decisions behind it |
 | `firmware/fd1_node/` | ESP32-S3 firmware: state machine, flow maths, MRV totals, pin map, thresholds |
 | `analysis/` | Bracket FEA (scikit-fem), gas and orifice calculations, closed-loop leak model, unit economics |
 | `docs/` | Diagram scripts, all deck figures, sources, patent notes |
@@ -50,10 +52,13 @@ python cad/src/fd1_assembly.py && python cad/src/render.py
 python analysis/bracket_fea.py && python analysis/gas_calcs.py && python analysis/leak_sim.py
 python electronics/bom.py && python electronics/schematic.py
 python docs/diagrams.py && python docs/research_figures.py
-# KiCad 7+
+# KiCad 7 + Freerouting 1.9
 cd electronics/kicad && python gen_schematic.py \
   && kicad-cli sch export netlist fd1_controller.kicad_sch -o fd1_controller.net \
-  && python check_netlist.py
+  && python check_netlist.py \
+  && python gen_pcb.py place \
+  && java -jar freerouting-1.9.0.jar -de fd1_controller.dsn -do fd1_controller.ses -mp 60 \
+  && python gen_pcb.py finish && python render_pcb.py
 ```
 
 ## Safety
@@ -62,4 +67,6 @@ The bench rig runs on CO2 as a non-flammable stand-in for seam gas, with purity 
 
 ## Status
 
-Stage 2 design complete. Next: footprints and PCB layout in KiCad, sensor drivers replacing the firmware stubs, rig calibration (see the roadmap in the deck).
+Stage 2 design complete, including a DRC-checked PCB. Next: Gerbers to fab, sensor drivers replacing the firmware stubs, rig build and calibration (roadmap in the deck).
+
+![PCB top](docs/figures/pcb_top.png)

@@ -77,8 +77,11 @@ fig.savefig(os.path.join(FIG, "system_stack.png"), facecolor="white"); plt.close
 gas = json.load(open(os.path.join(HERE, "..", "analysis", "gas_calcs_results.json")))
 t_day = gas["mrv_example"]["t_CH4_per_day"]
 usd_per_t = 980e6 / 1600e3            # Ember: $980 mn for ~1,600 kt captured by 2030 (2023 gas prices)
+bom = json.load(open(os.path.join(HERE, "..", "electronics", "bom_summary.json")))
+node = bom["node_inr"]; fx = bom["usd_inr"]
 econ = dict(usd_per_t_CH4=round(usd_per_t, 1), usd_per_day_one_borehole=round(t_day * usd_per_t),
-            node_parts_inr=21660, days_to_cover_at_85=round(21660 / (t_day * usd_per_t * 85), 2),
-            days_to_cover_at_100=round(21660 / (t_day * usd_per_t * 100), 2))
+            usd_inr=fx, node_parts_inr=node, inr_per_day_one_borehole=round(t_day * usd_per_t * fx),
+            days_to_cover_node=round(node / (t_day * usd_per_t * fx), 2),
+            days_to_cover_10x_node=round(10 * node / (t_day * usd_per_t * fx), 1))
 json.dump(econ, open(os.path.join(HERE, "..", "analysis", "unit_economics.json"), "w"), indent=2)
 print(econ)

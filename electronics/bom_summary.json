@@ -1,0 +1,18 @@
+{
+  "stage3_total_inr": 48400,
+  "node_inr": 35400,
+  "rig_inr": 13000,
+  "groups": {
+    "Sensing": 23820,
+    "Control": 4250,
+    "Actuation": 2200,
+    "HMI": 1350,
+    "Mechanical": 3780,
+    "Bench rig": 13000
+  },
+  "later": {
+    "Node #2 (O2-derived purity only, no NDIR, shares PCB batch)": 20000,
+    "Cluster router: 12 V motorised 3-way valve": 2800
+  },
+  "usd_inr": 95.5
+}

@@ -1,7 +1,9 @@
 {
   "usd_per_t_CH4": 612.5,
   "usd_per_day_one_borehole": 190,
-  "node_parts_inr": 21660,
-  "days_to_cover_at_85": 1.34,
-  "days_to_cover_at_100": 1.14
+  "usd_inr": 95.5,
+  "node_parts_inr": 35400,
+  "inr_per_day_one_borehole": 18133,
+  "days_to_cover_node": 1.95,
+  "days_to_cover_10x_node": 19.5
 }

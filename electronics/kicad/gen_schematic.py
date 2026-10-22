@@ -154,7 +154,7 @@ PARTS = [
     ("R4", "Device:R", "18k", FP_R, (92, 165), {"1": "P_ADC", "2": "GND"}),
     ("C1", "Device:C", "100nF", FP_C, (104, 165), {"1": "P_ADC", "2": "GND"}),
     # RS-485
-    ("U2", "Interface_UART:MAX3485", "MAX3485", None, (300, 40), {"1": "485_RO", "2": "485_DE", "3": "485_DE", "4": "485_DI", "5": "GND", "6": "485_A", "7": "485_B", "8": "+3V3"}),
+    ("U2", "Interface_UART:MAX3485", "MAX3485", "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm", (300, 40), {"1": "485_RO", "2": "485_DE", "3": "485_DE", "4": "485_DI", "5": "GND", "6": "485_A", "7": "485_B", "8": "+3V3"}),
     ("R5", "Device:R", "120R", FP_R, (335, 40), {"1": "485_A", "2": "485_B"}),
     ("J8", "Connector_Generic:Conn_01x03", "RS-485 to gateway", "TerminalBlock:TerminalBlock_bornier-3_P5.08mm", (360, 40), {"1": "485_A", "2": "485_B", "3": "GND"}),
     # Solenoid low-side driver
@@ -172,7 +172,7 @@ PARTS = [
     ("C2", "Device:C", "100nF", FP_C, (325, 185), {"1": "+12V", "2": "GND"}),
     ("J12", "Connector_Generic:Conn_01x02", "3-way router valve", "TerminalBlock:TerminalBlock_bornier-2_P5.08mm", (355, 160), {"1": "ROUT1", "2": "ROUT2"}),
     # Lamps + buzzer sink driver
-    ("U4", "Transistor_Array:ULN2003A", "ULN2003A", None, (300, 230), {"1": "LAMP_R", "2": "LAMP_A", "3": "LAMP_G", "4": "BUZ", "8": "GND", "9": "+12V", "16": "LR_O", "15": "LA_O", "14": "LG_O", "13": "BZ_O"}),
+    ("U4", "Transistor_Array:ULN2003A", "ULN2003A", "Package_DIP:DIP-16_W7.62mm", (300, 230), {"1": "LAMP_R", "2": "LAMP_A", "3": "LAMP_G", "4": "BUZ", "8": "GND", "9": "+12V", "16": "LR_O", "15": "LA_O", "14": "LG_O", "13": "BZ_O"}),
     ("J13", "Connector_Generic:Conn_01x05", "Stack light + buzzer", hdr(5), (355, 230), {"1": "+12V", "2": "LR_O", "3": "LA_O", "4": "LG_O", "5": "BZ_O"}),
     # microSD
     ("J14", "Connector_Generic:Conn_01x06", "microSD module", hdr(6), (240, 250), {"1": "+3V3", "2": "GND", "3": "SD_CS", "4": "SD_SCK", "5": "SD_MOSI", "6": "SD_MISO"}),

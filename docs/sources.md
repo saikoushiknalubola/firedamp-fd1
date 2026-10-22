@@ -14,6 +14,14 @@
 | MH-440D: 0-100 %vol, UART + 0.4-2.0 V, T90 < 30 s, 3 min warm-up | Winsen product page, https://www.winsen-sensor.com/sensors/combustible-sensor/mh440d.html |
 | Explosive triangle on the routing chart | Coward & Jones, US Bureau of Mines Bulletin 503 (approximate vertices) |
 | Judging criteria, themes, timeline | https://www.vishwakarma-awards.org/ |
+| MH-440D $235 per 2 pcs | Winsen store, https://shop.winsen-sensor.com/collections/flammable-gas-detection |
+| SDP810-500Pa ₹4,168.87; ESP32-S3-WROOM-1-N8R8 ₹800.38 | Lion Circuits listings, lioncircuits.com/parts |
+| ME2-O2 cell ₹3,009 | robu.in |
+| SEN0322 A$88.53 | Core Electronics |
+| ESP32-S3 DevKitC N8R8 ₹1,849.99 | Think Robotics |
+| Low-cost pilot valves need 0.02 MPa minimum | robu.in 12 V NC 1/2" valve listing (0.02-0.8 MPa) |
+| Zero-differential 12 V valve ~₹1,289 | Robocraze listing |
+| ₹95.46 per US$ | HDFC Sky, Oct 2026 |
 
 ## Our own calculations (reproducible)
 
@@ -24,4 +32,7 @@
 | Bracket FoS 1.87 (rev A) and 3.87 (rev B) | `analysis/bracket_fea.py` |
 | Leak model: 28.5% minimum with throttling, isolation at 331 s, 17.0% unmanaged | `analysis/leak_sim.py` |
 | $612.5 per t CH4, $190/day per borehole, payback < 2 days on parts | `docs/research_figures.py` → `analysis/unit_economics.json` |
-| ₹68,670 build, ₹21,660 per node | `electronics/bom.py` (pre-order estimates) |
+| ₹48,400 Stage 3 build, ₹35,400 per node | `electronics/bom.py`; price basis per line in `bom.csv` |
+| PCB: size, tracks, vias, DRC result | `electronics/kicad/gen_pcb.py` → `pcb_stats.json`, `drc_report.txt` |
+| 1.0 mm track for ~2.4 A | IPC-2221B external layer, 1 oz copper, 10 °C rise: I = 0.048 · ΔT^0.44 · A^0.725 |
+| DRV8871 trip ≈ 1.9 A with R_ILIM = 33 kΩ | TI DRV8871 datasheet: I_TRIP = 64 / R_ILIM(kΩ) |
