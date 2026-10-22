@@ -52,3 +52,4 @@ The bench rig uses CO2 as a non-flammable stand-in for seam gas; purity is deriv
 - Sensor driver code for SEN0322 and SDP810 (vendor libraries), replacing the stubs in `fd1_node.ino`.
 - Rig calibration data and the measured orifice Cd.
 # firedamp-fd1
+# firedamp-fd1
