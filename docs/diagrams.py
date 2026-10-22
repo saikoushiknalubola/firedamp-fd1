@@ -216,7 +216,7 @@ def gantt():
         ("Stage 3: prototype video + revised deck", "2026-12-01", "2026-12-04", RED),
         ("Node #2 + router + surface dashboard", "2026-12-05", "2026-12-31", LIME),
         ("72 h endurance + fault-injection runs", "2027-01-01", "2027-01-15", LIME),
-        ("Jury interview prep; mentor safety review", "2027-01-10", "2027-01-31", AMBER),
+        ("Jury interview prep; programme mentor safety review", "2027-01-10", "2027-01-31", AMBER),
         ("Finale build freeze; IIT Hyderabad demo", "2027-02-01", "2027-02-27", RED),
     ]
     for i, (t, a, b, c) in enumerate(tasks[::-1]):
