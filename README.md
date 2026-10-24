@@ -2,7 +2,10 @@
 
 **Vishwakarma Awards 2026-27** · Sustainable Mining (IIT Hyderabad) · Application ID **VK26-IITH-SM-0008**
 
-**Team Chakra, SR University, Warangal:** Saikoushik Nalubola (lead), Atthe Durga Raj, Devara Aravind
+**Team Chakra**
+- Saikoushik Nalubola (lead), B.Tech CSE (AI & ML), SR University, Warangal
+- Devara Aravind, Mining Engineering, University College of Engineering, Osmania University
+- Atthe Durga Raj, Mining Engineering, JNTUH University College of Engineering Manthani
 
 ![FD-1 bench node](docs/figures/cad_iso.png)
 
